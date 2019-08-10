@@ -22,12 +22,16 @@ export default {
 <style>
    .footernav{
      display: flex;
-     position: relative;
+     bottom: 0;
+  padding: 0;
+     position: fixed;
      bottom: 0;
      width: 100%;
      color: pink
    }
    .footernav>li{
+     text-align:center;
      list-style: none;
+      width: 25%;
    }
 </style>
