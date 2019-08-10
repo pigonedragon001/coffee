@@ -25,6 +25,7 @@ export default {
      position: relative;
      bottom: 0;
      width: 100%;
+     color: pink
    }
    .footernav>li{
      list-style: none;
