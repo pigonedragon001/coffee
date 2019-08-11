@@ -2,11 +2,26 @@
   <div>
      <router-view></router-view>
      <ul class="footernav">
-        <li><router-link to="/index">首页</router-link></li>
-        <li><router-link to="/menu">菜单</router-link></li>
-        <li><router-link to="/order">订单</router-link></li>
-        <li><router-link to="/shoppingcar">购物车</router-link></li>
-        <li><router-link to="/center">我的</router-link></li>
+        <li><router-link to="/index">
+           <img class="navImg" src="../public/image/sy.svg" alt="">
+           首页
+        </router-link></li>
+        <li><router-link to="/menu">
+           <img class="navImg" src="../public/image/menu.svg" alt="">
+           菜单
+        </router-link></li>
+        <li><router-link to="/order">
+           <img class="navImg" src="../public/image/order.svg" alt="">
+           订单
+        </router-link></li>
+        <li><router-link to="/shoppingcar">
+           <img class="navImg" src="../public/image/car.svg" alt="">
+           购物车
+         </router-link></li>
+        <li><router-link to="/center">
+         <img class="navImg" src="../public/image/mine.svg" alt="">
+          我的
+        </router-link></li>
      </ul>
   </div>
 </template>
@@ -15,7 +30,11 @@
 
 
 export default {
- 
+    data() {
+       return {
+          
+       }
+    },
 }
 </script>
 
@@ -28,15 +47,27 @@ export default {
    .footernav{
      display: flex;
      bottom: 0;
-  padding: 0;
      position: fixed;
-     bottom: 0;
      width: 100%;
-     color: pink
    }
    .footernav>li{
-     text-align:center;
+      text-align: center;
      list-style: none;
-      width: 25%;
+     width: 20%;
+     height:60px;
+     background: white;
+     font-size: 12px;
+     
    }
+   .navImg{
+      display: block;
+      width: 50%;
+      height: 30px;
+      margin-left: 25%;
+      margin-top: 5px
+   }
+  a{
+     text-decoration: none;
+     color:black
+  }
 </style>

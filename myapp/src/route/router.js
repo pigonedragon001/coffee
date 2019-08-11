@@ -7,7 +7,6 @@ import order from '../components/Order.vue';
 import shoppingcar from '../components/Shoppingcar.vue';
 import center from '../components/Center.vue';
 
-
 const router=new VueRouter({
     routes:[
         {
