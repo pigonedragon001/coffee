@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style>
+
+*{
+   padding: 0;
+   margin: 0;
+}
    .footernav{
      display: flex;
      bottom: 0;
