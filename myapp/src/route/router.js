@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 Vue.use(VueRouter);
-import home from '../components/Center.vue';
+import home from '../components/Index.vue';
 import menu from '../components/Menu.vue';
 import order from '../components/Order.vue';
 import shoppingcar from '../components/Shoppingcar.vue';
