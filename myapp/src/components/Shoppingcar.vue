@@ -158,7 +158,7 @@
     .pay{
         height: 80px;
         width: 100%;
-        background: yellow;
+        background: white;
         position: fixed;
         bottom: 60px;
         display: flex;
@@ -168,6 +168,7 @@
         line-height: 80px;
         text-indent: 20px;
         border-top: 1px solid red;
+        border-bottom: 1px solid red;
         box-sizing: border-box;
     }
     .pay p span{
