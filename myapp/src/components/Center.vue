@@ -1,8 +1,8 @@
 <template>
     <div>
-     <div class="header">
+     <div class="header"  @click="goto">
               <img class="img" src="../../public/image/login.svg" alt="">
-               <span class="login">立即登录</span>
+               <span class="login1">立即登录</span>
                <img class="more" src="../../public/image/more.svg" alt="">
      </div>
      <template>
@@ -51,6 +51,11 @@ export default {
                
            }
        },
+       methods: {
+           goto(){
+                this.$router.push('/register')
+           }
+       },
 }
 </script>
 
@@ -72,7 +77,7 @@ export default {
         left: 20px;
         top: 60px;
     }
-    .login{
+    .login1{
         width:70px;
         height:20px;
         position: absolute;
