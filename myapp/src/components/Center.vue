@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="Center">
      <div class="header">
               <img class="img" src="../../public/image/login.svg" alt="">
                <span class="login">立即登录</span>
@@ -58,6 +58,10 @@ export default {
      *{
          margin: 0;
          padding: 0;
+     }
+     .Center{
+         width: 100%;
+         font-size: 0.2rem;
      }
     .header{
         width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="project">
      <router-view></router-view>
      <ul class="footernav">
         <li><router-link to="/index">
@@ -39,7 +39,10 @@ export default {
 </script>
 
 <style>
-
+   .project{
+      width: 100vw;
+      height: 100vh;
+   }
 *{
    padding: 0;
    margin: 0;
@@ -54,15 +57,17 @@ export default {
       text-align: center;
      list-style: none;
      width: 20%;
-     height:60px;
-     background: white;
-     font-size: 12px;
+     height:1rem;
+     font-size: 0.3rem;
+     /* height:1rem; */
+     background: yellow;
+     /* font-size: 12px; */
      
    }
    .navImg{
       display: block;
       width: 50%;
-      height: 30px;
+      height: 0.4rem;
       margin-left: 25%;
       margin-top: 5px
    }
