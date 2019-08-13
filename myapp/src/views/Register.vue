@@ -38,8 +38,8 @@
 
 
           <el-form-item>
-                <el-radio v-model="radio" label="1">男</el-radio>
-                <el-radio v-model="radio" label="2">女</el-radio>
+                <el-radio v-model="radio" label="男">男</el-radio>
+                <el-radio v-model="radio" label="女">女</el-radio>
           </el-form-item>
 
 
@@ -52,11 +52,14 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 
 <script>
  import 'element-ui/lib/theme-chalk/index.css';
+ import axios from 'axios';
+
 export default {
   name: "Register", 
   data() {
@@ -147,17 +150,34 @@ export default {
       },
 
 
-      radio: '2'
+      radio: '1',
+      userType:'用户',
+      ts1:''
     }
   }, 
   methods: {
     // <!--提交注册-->
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
+         var userName=this.ruleForm2.username;
+         var userTel=this.ruleForm2.tel;
+         var userPwd=this.ruleForm2.pass;
+         var userSex=this.radio;
+         var userType=this.userType;
+         var userQuestion=this.ruleForm2.mb;
+         var userAnswer=this.ruleForm2.ma;
+
         if (valid) {
-          setTimeout(() => {
-            alert('注册成功')
-          }, 400);
+          axios.post('/lc/regist',{userName,userTel,userPwd,
+          userSex,userType,userQuestion,userAnswer}).then(result=>{
+            console.log(result.data)
+            if(result.data.code==="1"){
+                 this.$router.push('/login')
+            }else{
+               alert('手机号已注册!!!!!!')
+            }
+          })
+
         } else {
           console.log("error submit!!");
           return false;
@@ -192,11 +212,11 @@ export default {
 
 <style>
    .el-tabs__item{
-        font-size: 20px
+        font-size: 0.4rem
     }
     .navimg{
         width: 100%;
-        height: 200px;
+        height: 4rem;
     }
     *{
         padding: 0;
@@ -226,19 +246,19 @@ export default {
   bottom: 0;
 }
 #register {
-  max-width: 340px;
+  max-width: 6.8rem;
   margin: 0px auto;
   background: #fff;
-  padding: 20px 40px;
-  border-radius: 10px;
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.2rem;
   position: relative;
   z-index: 9;
 }
 .title {
-  font-size: 26px;
-  line-height: 50px;
+  font-size: 0.52rem;
+  line-height: 1rem;
   font-weight: bold;
-  margin: 10px;
+  margin: 0.2rem;
   text-align: center;
 }
 
@@ -247,14 +267,14 @@ export default {
 }
 
 .login {
-  margin-top: 10px;
-  font-size: 14px;
-  line-height: 22px;
+  margin-top: 0.2rem;
+  font-size: 0.28rem;
+  line-height: 0.44rem;
   color: #1ab2ff;
   cursor: pointer;
   text-align: left;
-  text-indent: 8px;
-  width: 160px;
+  text-indent: 0.16rem;
+  width: 3.2rem;
 }
 .login:hover {
   color: #2c2fd6;
@@ -265,8 +285,8 @@ export default {
   justify-content: space-between;
 }
 .code button {
-  margin-left: 20px;
-  width: 140px;
+  margin-left: 0.4rem;
+  width: 2.8rem;
   text-align: center;
 }
 .el-button--primary:focus {
@@ -274,4 +294,33 @@ export default {
   border-color: #409EFF;
   color: #fff;
 }
+   .demo-ruleForm{
+      width: 4.5rem;
+      height: 5.38rem;
+      margin-left: 15%
+   }
+   .el-form-item el-form-item--feedback{
+      width: 6.7rem;
+      margin-left: 0.4rem
+   }
+   .el-input__inner{
+     font-size: 0.3rem;
+     height: 0.8rem;
+   }
+
+   .el-radio__label{
+     font-size: 0.3rem
+   }
+   .el-input{
+     width: 4.5rem;
+     margin-bottom: 0.2rem
+   }
+   .el-button--primary{
+     font-size: 0.3rem
+   }
+   .el-form-item__error{
+     font-size: 0.25rem;
+     padding-top:0;
+     top:88%
+   }
 </style>

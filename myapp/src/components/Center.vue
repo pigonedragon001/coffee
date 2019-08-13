@@ -7,53 +7,64 @@
      </div>
      <template>
           <ul class="message">
-              <li>
+              <li @click="togo">
                   <img src="../../public/image/person.svg" alt="">
-                  <span>个人资料</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span  class="span2">个人资料</span>
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
               <li>
                   <img src="../../public/image/money.svg" alt="">
-                  <span>咖啡钱包</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span class="span2">咖啡钱包</span>  
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
                 <li>
                   <img src="../../public/image/youhui.svg" alt="">
-                  <span>优惠券</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span class="span2">优惠券</span>
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
                <li>
                   <img src="../../public/image/youhui1.svg" alt="">
-                  <span>兑换优惠</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span class="span2">兑换优惠</span>
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
                <li>
                   <img src="../../public/image/love.svg" alt="">
-                  <span>我的收藏</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span class="span2">我的收藏</span>
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
                <li style="margin-top:10px; border-bottom:none">
                   <img src="../../public/image/help.svg" alt="">
-                  <span>帮助反馈</span>
-                  <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt="">
+                  <span class="span2">帮助反馈</span>
+                  <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
           </ul>
      </template>
        <template>
-             <img style="width:100%;height:170px;margin-top:10px;margin-bottom:10px" src="https://imgsa.baidu.com/baike/pic/item/8d5494eef01f3a297801d3239725bc315d607c15.jpg" alt="">
+             <img style="width:100%;height:3.4rem;margin-top:0.2rem;margin-bottom:0.2rem" src="../../public/image/adv.jpg" alt="">
        </template>
    </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
        data() {
            return {
-               
+              
            }
        },
        methods: {
            goto(){
                 this.$router.push('/register')
+           },
+           togo(){
+                var token=localStorage.getItem('token');
+                var userTel=localStorage.getItem('tel');
+                 console.log(token,userTel)
+                axios.post('/lc/usermess',{token,userTel}).then(result=>{
+                    console.log(result.data)
+                    // if(result.data.)
+                })
            }
        },
 }
@@ -64,39 +75,42 @@ export default {
          margin: 0;
          padding: 0;
      }
+     body{
+         font-size: 0.3rem
+     }
     .header{
         width: 100%;
-        height:170px;
+        height:3.3rem;
         background: rgb(187, 175, 170);
         position: relative;
     }
     .img{
-        width: 50px;
-        height: 50px;
+        width: 0.6rem;
+        height: 0.6rem;
         position: absolute;
-        left: 20px;
-        top: 60px;
+        left: 0.2rem;
+        top: 1.35rem;
     }
     .login1{
-        width:70px;
-        height:20px;
+        width:1.2rem;
+        height:0.5rem;
         position: absolute;
-        left: 85px;
-        top: 75px;
+        left: 1rem;
+        top: 1.4rem;
         color: white
     }
     .more{
-        width:30px;
-        height:30px;
+        width:0.6rem;
+        height:0.6rem;
         position: absolute;
-        right:20px;
-        top: 70px
+        right:0.4rem;
+        top: 1.4rem
     }
     .message>li{
         box-sizing: border-box;
         width:100%;
-        height:45px;
-        padding:15px;
+        height:0.9rem;
+        padding:0.3rem;
         background: white;
         position: relative;
         list-style: none;
@@ -107,17 +121,23 @@ export default {
     }
    
     .message>li>img{
-           width:25px;
-           height:20px;
+           width:0.5rem;
+           height:0.4rem;
            position: absolute;
-           top:12px;
+           top:0.25rem;
     }
-    .message>li>span{
-        width: 80px;
+    .span2{
+        width: 1.6rem;
         position: absolute;
-        left: 50px;
-        height: 20px;
-        top:12px
+        left: 1rem;
+        height: 0.4rem;
+        top:0.24rem
     }
+   /* .span1{
+        position: absolute;
+        width: 1rem;
+        right:1rem;
+        color: red
+    } */
 </style>
 
