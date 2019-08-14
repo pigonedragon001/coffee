@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="project">
      <router-view></router-view>
      <ul class="footernav">
         <li><router-link to="/index">
@@ -39,6 +39,10 @@ export default {
 </script>
 
 <style>
+.project{
+   width: 100vw;
+   height: 100vh;
+}
 
 *{
    padding: 0;
