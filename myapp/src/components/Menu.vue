@@ -17,78 +17,75 @@
       :iconUrl="value.tabUrl"
       >
     <ul>
-      <li :key="product.id" v-for="product in value.content.products" @click="jiarugouwuche(product)">
+      <li :key="product.goodId" v-for="product in value.content.products" @click="jiarugouwuche(product)">
           <div class="food-item" :v-for="product in value.content.products">
             <div class="icon">
-                <img width=".6rem" height=".6rem" :src="product.image">
+                <img width="100" height="100" :src="product.goodImgPath2">
             </div>
             <div class="content">
-              <span>{{product.name}}</span>
+              <span>{{product.goodName}}</span>
               <p>Mocha</p>
               <div class="jiage">
-                <h5>￥{{product.price}}</h5>
+                <h5>￥{{product.goodPrice}}</h5>
                 <p><img width="30" height="35" src="../../public/image/tianjia.svg"></p>
               </div>
             </div>
+
           </div>
       </li>
     </ul>
-
-
-
     </nut-tab-panel>
 </nut-tab>
   </div>
-  <div> 
+  <div > 
     <div class="xiangqing"  style="font-size: .25rem;">
-      <div class="xiangqing-shoucang" @click="xiangqingyinchang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
-      <div class="xiangqingyinchang" @click="xiangqingyinchang"><img src="../../public/image/chacha2.svg" class="cha"></div>
-      <div class="xiangqingtu"><img src="../assets/092256pfabb5dfx4aic2jt.jpg" class="xiangqingtu"></div>
+      <div @click="like" class="xiangqing-shoucang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
+      <div class="xiangqingyinchang" @click="xiangqingyinchang(e)"><img src="../../public/image/chacha2.svg" class="cha"></div>
+      <div class="xiangqingtu"><img :src="xiangqing.goodImgPath" class="xiangqingtu" height="250"></div>
       <div class="xiangqing-leirong">
         <div class="gundong">
           <div class="xiangqing-guige">
-            <ul>
+            <ul style="margin-bottom: .3rem;">
               <li class="guige">
                  <p>规格</p>
-                <button @click="choice">大</button>
-                <button @click="choice">小</button>
+                <button @click="choice">大杯</button>
+                <button @click="choice">小杯</button>
               </li>
               <li class="wendu">
                  <p>温度</p>
-                <button @click="choice2">冰</button>
-                <button @click="choice2">热</button>
+                <button @click="choice2">冷饮</button>
+                <button @click="choice2">热饮</button>
               </li>
               <li class="tangdu">
                  <p>糖度</p>
                 <button @click="choice3">全糖</button>
                 <button @click="choice3">半糖</button>
               </li>
-              <li class="naiyou">
-                 <p>奶油</p>
-                <button @click="choice4">默认奶油</button>
-                <button @click="choice4">无奶油</button>
-              </li>
-              <li>
-                 <p>奶油</p>
-                <button>默认奶油</button>
-                <button>无奶油</button>
-              </li>
             </ul>
           </div>
+          <div class="shangpingxiangqing">
+              <h4 style="height: .6rem; line-height: .6rem; border-top: 1px solid rgb(207, 168, 132); padding-left: .2rem;">商品描述</h4>
+              <p  style="line-height: .3rem; padding-left: .2rem; padding-botton: .2rem;">{{xiangqing.goodDec}}</p>
+          </div>
+          <div class="gao"></div>
         </div>
       </div>
 
       <div class="xiangqing-jiarugouwuche">
+          
+          <div class="shuliang"> 
+            <div class="jiage"  style="float: left; line-height: .6rem;">
+            <h4 style="padding-left: .25rem;">￥24</h4>
+          </div>
+            <nut-stepper :simple="false" value="1" min="1" style="height: .6rem; width: 2rem; background-color: #fff; color: rgb(67, 111, 255); float: right; margin-right: .28rem;"></nut-stepper>
+          </div>
           <div class="jiarugouwuche">
-            <button class="maierzengyi" style=" background-color: #fff;">充2赠1</button>
-            <button class="jiarugouwuche2" style="border: 0; background-color: rgb(67, 111, 255); color: #fff;">加入购物车</button>
+            <button class="maierzengyi" style=" background-color: #fff; margin: .4rem .1rem .2rem .5rem; float: left;" >充2赠1</button>
+            <button class="jiarugouwuche2" style="border: 0; background-color: rgb(67, 111, 255); color: #fff; float: left; margin: .4rem 0 .2rem .1rem;" @click="dianji-jiarugouwuche">加入购物车</button>
           </div>
       </div>
     </div>
   </div>
-
-  
-
 </div>
   
 </template>
@@ -98,107 +95,84 @@ import axios from 'axios';
 export default {
     data() {
         return {
-          
+          xiangqing:{},
           current:0,
           index:1,
         activeKey: 0,
         positionNavCurr:'top',
+
         editableTabs:[
         {
           tabTitle:'人气Top',
           content:{
-            products:[{
-            name:"摩卡",
-            price:999,
-            image:'../assets/092256pfabb5dfx4aic2jt.jpg'
-            },{
-            name:"草莓芝士茉香茶",
-            price:27,
-            }]
+            products:[]
           }
         },
         {
           tabTitle:'大师咖啡',
           content:{
-            products:[{
-                name:"香草拿铁",
-                price:27,
-            },
-            {
-                name:"焦糖拿铁",
-                price:27,
-            },
-            {
-                name:"标准美式",
-                price:21,
-            }]
+            products:[]
           }
         },
         {
           tabTitle:'小鹿茶',
           content:{
-              products:[{
-                name:"大红袍寒天牛乳茶",
-                price:21,
-              }]
+              products:[]
           }
         },
         {
           tabTitle:'瑞纳冰',
           content:{
-              products:[{
-                name:"小雪荔枝瑞纳冰",
-                price:21,
-              }]
+              products:[]
           }
         },
         {
           tabTitle:'鲜榨果蔬汁',
           content:{
-              products:[{
-                name:"NFC鲜榨橙汁",
-                price:24,
-              }]
+              products:[]
           }
         },
         {
           tabTitle:'经典饮品',
           content:{
-              products:[{
-                name:"纯牛奶",
-                price:21,
-              }]
+              products:[]
           }
         },
         {
           tabTitle:'健康轻食',
           content:{
-              products:[{
-                name:"夏威夷菠萝火腿卷",
-                price:21,
-              }]
+              products:[]
           }
         },
          {
           tabTitle:'幸运小食',
           content:{
-              products:[{
-                name:"经典有机甘栗仁",
-                price:9.9,
-              }]
+              products:[]
           }
         },
       ]
         };
+
+        msg:'k'
         
     },
     methods: {
       jiarugouwuche(product){
         document.getElementsByClassName("xiangqing")[0].style.display="block";
+        this.xiangqing=product;
+        console.log(this.xiangqing)
         console.log(product)
       },
-      xiangqingyinchang(){
-        document.getElementsByClassName("xiangqing")[0].style.display="none"
+      xiangqingyinchang(e){
+        var e = e || window.event;
+        if(e.stopPropagation){
+          e.stopPropagation();
+        } else{
+          e.cancelBubble = true;
+        }
+
+        document.getElementsByClassName("xiangqing")[0].style.display="none";
+        console.log('asdasdasd')
       },
       choice(e){
         console.log(e);
@@ -237,9 +211,30 @@ export default {
         console.log(btnList);
       },
       tabSwitch(e){
+        console.log(e);
         axios.post('http://192.168.52.95:8080/lc/goodsmess',).then(result=>{
             console.log(result.data)
+            this.editableTabs[e].content.products = [];
+            for(let item of result.data.response){
+              if(item.goodKindId===e+1){
+                this.editableTabs[e].content.products.push(item);
+              }
+            }
+            console.log(this.editableTabs[0].content.products);
         })
+
+      },
+      dianjijiarugouwuche(){
+        
+      },
+
+      like(){
+          var token=localStorage.getItem('token');
+          var userTel=localStorage.getItem('tel');
+          var goodName=this.xiangqing.goodName;
+          axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
+            console.log(result.data)
+          })
       }
   },
   mounted(){
@@ -252,6 +247,9 @@ export default {
 .a{
   width: 100%;
 }
+.gao{
+  height: .6rem;
+}
 .xiangqing-guige>ul>li>p{
   width: 1rem;
   height: .6rem;
@@ -259,6 +257,7 @@ export default {
   text-align:center;
   float: left;
    margin: .5rem 0rem 0rem .5rem;
+   
 }
 .xiangqing-guige>ul>li>button{
   height: .6rem;
@@ -268,6 +267,7 @@ export default {
   color: rgb(207, 168, 132);
   background-color: #fff;
   margin: .5rem 0rem 0rem .5rem;
+  
 }
   .lunboimg{
       width: 100%;
@@ -285,13 +285,12 @@ export default {
       float: left;
       width: 25%;
       height: 1.14rem;
-
+  
   }
   .content{
       float: left;
       width: 60%;
       padding-left: .2rem;
-      
   }
   .content>p{
     font-size: .2rem;
@@ -308,7 +307,7 @@ export default {
       visibility: hidden;
       height: 0;
       clear: both;  */
-
+margin-right: ;
   }
   .jiage{
       height: .4rem;
@@ -342,13 +341,14 @@ export default {
         margin-top: -4.5rem;
       width: 6rem;
       height: 9rem;
-      background-color: red;
+      background-color: rgb(255, 255, 255);
       z-index: 111;
       display: none;
+      border-radius: .2rem;
   }
   .xiangqingtu{
       width: 100%;
-      height: 3rem;
+      height: 2.6rem;
       
   }
   .xiangqingyinchang{
@@ -381,6 +381,7 @@ export default {
     position: absolute;
       top: 0;
       left: 0;
+      border-radius: .2rem .2rem 0 0;
   }
   .xiangqing-jiarugouwuche{
     width: 100%;
@@ -388,7 +389,8 @@ export default {
     position: absolute;
       bottom: 0;
       left: 0;
-      background-color: rgb(117, 117, 117);
+      background-color: rgb(240, 240, 240);
+    border-radius: 0 0 .2rem .2rem;
   }
   .xiangqing-leirong{
     width: 100%;
@@ -427,5 +429,9 @@ export default {
   height: .8rem;
   border: 1px solid rgb(252, 146, 47);
   color: rgb(252, 146, 47);
+}
+.shuliang{
+  overflow: hidden;
+  margin-top: .3rem;
 }
   </style>

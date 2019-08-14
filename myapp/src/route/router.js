@@ -6,6 +6,10 @@ import menu from '../components/Menu.vue';
 import order from '../components/Order.vue';
 import shoppingcar from '../components/Shoppingcar.vue';
 import center from '../components/Center.vue';
+import register from '../views/Register.vue';
+import login from '../views/Login.vue';
+import findpwd from '../views/FindPwd.vue';
+import usermsg from '../views/Usermsg.vue';
 
 const router=new VueRouter({
     routes:[
@@ -29,6 +33,22 @@ const router=new VueRouter({
             path:'/center',
             component:center
         },
+        {
+            path:'/register',
+            component:register
+        },
+        {
+            path:'/login',
+            component:login
+        },
+        {
+            path:'/findpwd',
+            component:findpwd
+        },
+        {
+            path:'/usermsg',
+            component:usermsg
+        }
     ]
 })
 

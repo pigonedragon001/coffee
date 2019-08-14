@@ -44,6 +44,11 @@ export default {
    height: 100vh;
 }
 
+ .project{
+    width: 100vw;
+    height: 100vh;
+ }
+
 *{
    padding: 0;
    margin: 0;
@@ -58,15 +63,15 @@ export default {
       text-align: center;
      list-style: none;
      width: 20%;
-     height:60px;
+     height:1rem;
      background: white;
-     font-size: 12px;
+     font-size: 0.3rem;
      
    }
    .navImg{
       display: block;
       width: 50%;
-      height: 30px;
+      height: 0.4rem;
       margin-left: 25%;
       margin-top: 5px
    }
