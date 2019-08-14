@@ -1,9 +1,11 @@
 <template>
     <div>
      <div class="header"  @click="goto">
-              <img class="img" src="../../public/image/login.svg" alt="">
-               <span class="login1">立即登录</span>
-               <img class="more" src="../../public/image/more.svg" alt="">
+              <img class="img" v-if="jyan" src="../../public/image/login.svg" alt="">
+              <img class="img" v-if="!jyan" src="../../public/image/smile.svg" alt="">
+               <span class="login1" v-if="jyan">立即登录</span>
+               <span class="login1" v-if="!jyan">欢迎光临</span>
+               <img class="more"  src="../../public/image/more.svg" alt="">
      </div>
      <template>
           <ul class="message">
@@ -27,9 +29,9 @@
                   <span class="span2">兑换优惠</span>
                   <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
-               <li>
+               <li @click="gomylike">
                   <img src="../../public/image/love.svg" alt="">
-                  <span class="span2">我的收藏</span>
+                  <span class="span2" @click="gomylike">我的收藏</span>
                   <img style="position:absolute;width:0.6rem;height:0.6rem;right:0.4rem;top:0.15rem" src="../../public/image/more.svg" alt="">
               </li>
                <li style="margin-top:10px; border-bottom:none">
@@ -45,12 +47,13 @@
    </div>
 </template>
 <script>
+
 import axios from 'axios';
 
 export default {
        data() {
            return {
-              
+               jyan:true,
            }
        },
        methods: {
@@ -63,9 +66,31 @@ export default {
                  console.log(token,userTel)
                 axios.post('/lc/usermess',{token,userTel}).then(result=>{
                     console.log(result.data)
-                    // if(result.data.)
+                    if(result.data.errMsg){
+                        this.$router.push('/err')
+                    }
+                   else{
+                       var userName=result.data.userName;
+                       var userSex=result.data.userSex;
+                        var userTel=result.data.userTel;
+                        var  userPurse=result.data.userPurse;
+                     this.$router.push({path:'/usermsg',query:{userName,userSex,userTel,userPurse}})
+                    }
                 })
-           }
+           },
+         gomylike(){
+              if(localStorage.getItem('token')!==null){
+                  this.$router.push('/mylike')
+              }
+              else{
+                  this.$router.push('/err')
+              }
+         }
+       },
+       mounted() {
+             if(localStorage.getItem('token')!==null){
+                   this.jyan=false
+             }
        },
 }
 </script>
