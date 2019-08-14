@@ -22,13 +22,12 @@
     export default {
         data() {
             return {
-                myplace:{
-                    userid:12121212121,
-                    name:null,
-                    sex:null,
-                    tel:null,
-                    address:null
-                }
+                // myplace:{
+                //     receiveName:'',
+                //     receiveSex:'',
+                //     receiveTel:'',
+                //     receiveAddress:''
+                // }
             }
         },
         methods: {
@@ -37,14 +36,24 @@
             },
             keepData(){
                 // console.log(this.myplace);
-                let token='eyJjbGllbnQiOiIxOTIuMTY4LjUyLjk1IiwidXNlclRlbCI6IjE1NjI5MTk3NzExIiwiZGF0ZSI6MTU2NTY5OTExNjEwOX0';
-                this.myplace.name=this.$refs.name.value;
-                this.myplace.sex=this.$refs.sex.value;
-                this.myplace.tel=this.$refs.tel.value;
-                this.myplace.address=this.$refs.address.value;
-                console.log(this.myplace);
-                axios.post('http://192.168.52.95:8080/lc/addAddress',(this.myplace,token)).then((result)=>{
-                    console.log(result.data);
+                // let token='eyJjbGllbnQiOiIxOTIuMTY4LjUyLjk1IiwidXNlclRlbCI6IjE1NjI5MTk3NzExIiwiZGF0ZSI6MTU2NTY5OTExNjEwOX0';
+               let receiveName=this.$refs.name.value;
+               let receiveSex=this.$refs.sex.value;
+               let receiveTel=this.$refs.tel.value;
+               let receiveAddress=this.$refs.address.value;
+               let token=localStorage.getItem('token');
+               let userTel=localStorage.getItem('tel');
+                // var token=localStorage.getItem('token');
+                // console.log(this.myplace);
+                axios.post('/lc/addAddress',{userTel,receiveName,receiveAddress,receiveTel,receiveSex,token}).then((result)=>{
+                    // console.log(result.data);
+                    if(result.data.code==="1"){
+                        this.$refs.name.value='';
+                        this.$refs.sex.value='';
+                        this.$refs.tel.value='';
+                        this.$refs.address.value='';
+                        this.$router.push('/getAddress');
+                    }
                 })
             }
         },
@@ -62,16 +71,19 @@
 <style scoped>
     .addAddress{
         font-size: 0.3rem;
+        background: WhiteSmoke;
+        height: 100%;
     }
     .head{
         display: flex;
         width: 100%;
         justify-content: center;
         height: 1rem;
-        background: yellow;
+        background: #fff;
         align-items: center;
         position: fixed;
         top: 0px;
+        border-bottom: 1px solid #333;
     }
     .head button{
         width: 0.6rem;
@@ -79,7 +91,7 @@
         font-size: 0.6rem;
         border: none;
         margin-left: 0.3rem;
-        background: yellow;
+        background: #fff;
         position: fixed;
     }
 
@@ -98,6 +110,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        background: #fff;
     }
     .msg ul li span{
         display: block;

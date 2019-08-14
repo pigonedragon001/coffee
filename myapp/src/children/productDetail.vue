@@ -34,9 +34,9 @@
                     products: [
                         { id: '1', name: '拿铁', tem: '热', sugar: '全糖', level: '大', price: 20, count: 1 },
                         { id: '2', name: '抹茶', tem: '冷', sugar: '少糖', level: '小', price: 17, count: 1 },
-                        { id: '1', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
-                        { id: '1', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
-                        { id: '1', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
+                        { id: '3', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
+                        { id: '4', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
+                        { id: '5', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
                     ],
                     address:[
                         {user:'张三',place:'金融港店(NO.1591)',phone:'111111'},

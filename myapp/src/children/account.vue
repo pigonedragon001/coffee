@@ -5,13 +5,14 @@
             立即取餐 约11:30可取
         </div>
         <div class="getAdress">
+            <div style="font-weight: bold"></div>
             <button @click='getAdress'>选择地址</button>
         </div>
         <div class="getProducts">
             <p>订单信息</p>
             <ul>
                 <li v-for="product in products" :key="product.id">
-                   <p>{{ product.name }}</p> <p><span style="margin-right: 20px;">×{{ product.count }}</span><span>￥{{product.price}}</span></p>  
+                   <p style="font-weight: bold">{{ product.name }}</p> <p><span style="margin-right: 20px;">×{{ product.count }}</span><span style="font-weight: bold">￥{{product.price}}</span></p>  
                 </li>
             </ul>
             <p>合计 <span>￥{{total}}</span></p>
@@ -45,7 +46,7 @@
         },
         methods: {
             gotoBack(){
-                history.back();
+                this.$router.push('/shoppingcar');
             },
             getAdress(){
                 this.$router.push('/getAddress')
@@ -68,6 +69,14 @@
             }
         },
         mounted() {
+            let choicedAddress=JSON.parse(localStorage.getItem('choicedAdress'));
+            // console.log(choicedAddress);
+            if(choicedAddress){
+                document.querySelector('.getAdress div').innerHTML=`
+                    <p>${choicedAddress.aAddress}</p>
+                    <p><span>${choicedAddress.aTel}</span>&emsp;<span>${choicedAddress.aName}</span></p>
+                `;
+            }
             document.getElementsByClassName("footernav")[0].style.visibility='hidden';
         },
         beforeDestroy() {
@@ -80,13 +89,14 @@
         position: relative;
         width: 100%;
         font-size: 0.3rem;
+        background: WhiteSmoke;
     }
     .head{
         display: flex;
         width: 100%;
         justify-content: center;
         height: 1rem;
-        background: yellow;
+        background: #fff;
         align-items: center;
         position: fixed;
         top: 0px;
@@ -97,40 +107,57 @@
         font-size: 0.6rem;
         border: none;
         margin-left: 0.3rem;
-        background: yellow;
+        background:  #fff;
         position: fixed;
     }
     .getMeal{
-        height: 1.5rem;
-        background: red;
+        height: 1rem;
+        background: #fff;
         margin-top: 1rem;
+        border-top: 1px solid #333;
         text-align: center;
-        line-height: 1.5rem;
+        line-height: 1rem;
+        font-weight: bold
     }
 
     .getAdress{
         height: 1.6rem;
         width: 100%;
-        background: pink;
+        background: #fff;
         text-align: center;
-        line-height: 1.6rem;
+        /* line-height: 1.6rem; */
+        margin-top: 0.2rem;
+        border-bottom: 1px solid #333;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        align-items: center;
     }
+    /* .getAdress  p{
+        height: 0.5rem;
+        background: red;
+    } */
     .getAdress button{
         width: 2.4rem;
-        font-size: 0.5rem;
+        font-size: 0.4rem;
         border-radius: 0.1rem;
+        background: #fff;
+        /* outline: none; */
     }
 
     .getProducts{
         padding-left: 0.2rem;
+        background: #fff;
         /* box-sizing: border-box; */
     }
     .getProducts>p:nth-of-type(1){
-        line-height: 40px;
+        line-height: 0.8rem;
+        font-weight: bold;
+        
     }
     .getProducts ul li{
         height: 1.2rem;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #333;
         display: flex;
         justify-content: space-between;
         padding-right: 0.2rem;
@@ -141,7 +168,6 @@
         text-align: right;
         padding-right: 0.2rem;
         line-height: 1rem;
-        background: skyblue;
     }
     .getProducts>p:nth-of-type(2) span{
         /* font-size: 24px; */
@@ -151,15 +177,16 @@
     .useMsg{
         /* font-size: 18px; */
         margin-bottom: 1.6rem;
+        margin-top: 0.2rem;
     }
     .useMsg ul{
         padding: 0 10px;
         margin-top: 0.3rem;
-        background: pink;
+        background: #fff;
     }
     .useMsg li{
         height: 1rem;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #333;
         line-height: 1rem;
     }
     .footPay{
