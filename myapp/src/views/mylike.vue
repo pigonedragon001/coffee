@@ -12,7 +12,7 @@
                  <span class="delmylike">取消</span>
              </li>
 
-              <li>
+              <!-- <li>
                  <img src="http://img0.imgtn.bdimg.com/it/u=3485019702,472626870&fm=26&gp=0.jpg" alt="">
                  <span class="mylikename">朱一龙海报</span>
                  <span class="mylikeprice">￥98</span>
@@ -31,7 +31,7 @@
                  <span class="mylikename">朱一龙海报</span>
                  <span class="mylikeprice">￥98</span>
                  <span class="delmylike">取消</span>
-             </li>
+             </li> -->
          </ul>
     </div>
 </template>
@@ -42,7 +42,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            mylikelist:[]
+            mylikelist:[],
         }
     },
     methods: {
@@ -55,6 +55,7 @@ export default {
         var userTel=localStorage.getItem('tel');
         axios.post('/lc/selectcollect',{token,userTel}).then(result=>{
             console.log(result.data)
+            this.mylikelist=result.data.response
         })
     },
 }
