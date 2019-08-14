@@ -10,6 +10,8 @@ import register from '../views/Register.vue';
 import login from '../views/Login.vue';
 import findpwd from '../views/FindPwd.vue';
 import usermsg from '../views/Usermsg.vue';
+import err from '../views/err.vue';
+import mylike from '../views/mylike.vue';
 
 import allItems from '../children/allItems.vue';
 import finishedItems from '../children/finishedItems.vue';
@@ -103,6 +105,14 @@ const router=new VueRouter({
         {
             path:'/usermsg',
             component:usermsg
+        },
+        {
+            path:'/err',
+            component:err
+        },
+        {
+            path:'/mylike',
+            component:mylike
         }
     ]
 })

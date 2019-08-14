@@ -29,7 +29,7 @@
             </ul>
         </div>
         <div class="footPay">
-            <p>还需支付<span>￥{{total}}</span></p><button @click='pay'>去支付</button>
+            <p>还需支付<span style="font-weight: bold">￥{{total}}</span></p><button @click='pay'>去支付</button>
         </div>
     </div>
 </template>
@@ -206,6 +206,7 @@
     }
     .footPay button{
         font-size: 0.4rem;
+        background: skyblue;
         height: 100%;
         width: 40%;
     }
