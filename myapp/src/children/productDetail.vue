@@ -8,13 +8,13 @@
         </div>
         <div class="address">
             <p>{{items.address[0].place}}</p>
-            <p>洪山区光谷大道洪山区光谷大道洪山区光谷谷大道洪山区光谷大道洪山区光谷大道</p>
+            <p style="color: rgb(122, 119, 119); font-size:.25rem;">江夏区流芳大道青年公寓二期五栋</p>
         </div>
         <div class="products">
-            <p><span>自提订单: {{items.num}}</span><span>{{items.time}}</span></p>
+            <p style="color: rgb(122, 119, 119); font-size:.25rem;"><span>自提订单: {{items.num}}</span><span>{{items.time}}</span></p>
             <ul>
                 <li v-for="product in items.products" :key="product.id">
-                    <span>{{product.name}}<br>{{product.level}}/{{product.sugar}}/{{product.tem}}</span><span>{{product.count}}&emsp;${{product.price}}</span>
+                   <p><span style="font-weight: bold;">{{product.name}}</span><span style="font-size: .25rem"><br>{{product.level}}/{{product.sugar}}/{{product.tem}}</span></p> <span>{{product.count}}&emsp;${{product.price}}</span>
                 </li>
             </ul>
             <p><span>共{{items.sumCount}}件商品</span><span>实付￥{{items.total}}</span></p>
@@ -66,13 +66,15 @@
     .productDetail{
         width: 100%;
         font-size:0.3rem;
+        height: 100%;
+        background: WhiteSmoke;
     }
     .head{
         display: flex;
         width: 100%;
         justify-content: center;
         height: 1rem;
-        background: yellow;
+        background: #fff;
         align-items: center;
         position: fixed;
         top: 0px;
@@ -84,7 +86,7 @@
         font-size: 0.6rem;
         border: none;
         margin-left: 0.3rem;
-        background: yellow;
+        background: #fff;
         position: fixed;
     }
 
@@ -92,7 +94,7 @@
         margin-top: 1rem;
         padding: 0.2rem;
         height: 2.4rem;
-        background: skyblue;
+        background: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -105,8 +107,8 @@
 
     .address{
         height: 1.6rem;
-        margin-top: 10px;
-        background: yellowgreen;
+        margin-top: 0.2rem;
+        background: #fff;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -118,12 +120,12 @@
 
     .products{
         margin-top: 0.2rem;
-        background: green;
+        background: #fff;
         padding: 0 0.2rem;
     }
-    .products p{
+    .products>p{
         height: 1rem;
-        background: red;
+        background: #fff;
         line-height: 1rem;
         display: flex;
         justify-content: space-between;

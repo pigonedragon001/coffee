@@ -3,14 +3,14 @@
         <div class="head"><button @click='gotoBack'>&lt;</button><span>我的地址</span></div>
         <div class="myaddress">
             <p><span>我的收货地址</span><button>管理我的地址</button></p>
-            <template>
+            <!-- <template> -->
                 <ul>
                     <li v-for="(item, index) in allAdress" :key="index" @click='choiceAdress(item)'>
                         <p>{{item.aAddress}}</p>
                         <p><span>{{item.aTel}}</span>&emsp;<span>{{item.aName}}</span></p>
                     </li>
                 </ul>
-            </template>
+            <!-- </template> -->
 
         </div>
         <div class="add">
@@ -90,10 +90,13 @@
         margin-top: 1rem;
         border-top: 1px solid #333;
     }
-
+    .myaddress>p{
+        line-height: 1rem;
+        /* padding: 0.1rem 0; */
+    }
     .myaddress>p:nth-of-type(1) {
-        height: 0.8rem;
-        line-height: 0.8rem;
+        /* height: 0.8rem; */
+        line-height: 1rem;
         display: flex;
         justify-content: space-between;
     }
@@ -105,6 +108,12 @@
         color: blue;
         outline: 0;
     }
+    .myaddress ul li>p{
+        padding: 0.1rem 0;
+    }
+    /* .myaddress ul li>p:nth-of-type(2){
+        margin-top: 0.2rem;
+    } */
 
     .myaddress ul li {
         border-top: 1px solid #333;
@@ -125,7 +134,7 @@
     .add button {
         height: 0.8rem;
         font-size: 0.5rem;
-        background: yellow;
+        background: skyblue;
         line-height: 0.8rem;
         width: 90%;
         border: none;

@@ -2,9 +2,9 @@
 <div class="a">
     <div style="height: 3rem">
         <van-swipe :autoplay="3000" indicator-color="white" style="height: 3rem;">
-            <van-swipe-item><img src="../assets/092256pfabb5dfx4aic2jt.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
-            <van-swipe-item><img src="../assets/5bc0575c5ef17.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
-            <van-swipe-item><img src="../assets/20180920161429_Jh8FP.jpeg.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo5.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo11.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo9.png" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
         </van-swipe>
   </div>
   <div>
@@ -37,7 +37,7 @@
     </nut-tab-panel>
 </nut-tab>
   </div>
-  <div > 
+  <div class="zhezhaoceng"> 
     <div class="xiangqing"  style="font-size: .25rem;">
       <div v-if="!img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
        <div v-if="img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/love4.svg" class="shoucang"></div>
@@ -76,9 +76,10 @@
           
           <div class="shuliang"> 
             <div class="jiage"  style="float: left; line-height: .6rem;">
-            <h4 style="padding-left: .25rem;">￥24  {{count}}</h4>
+              <h4 style="float: left; padding-left: .2rem;">单价:￥</h4>
+            <h4 style="padding-left: .05rem; color: rgb(207, 168, 132); float: left;">{{xiangqing.goodPrice}}</h4>
           </div>
-            <nut-stepper :simple="false" :value.sync="count" min="1" style="height: .6rem; width: 2rem; background-color: #fff; color: rgb(67, 111, 255); float: right; margin-right: .28rem;"></nut-stepper>
+            <nut-stepper :simple="false" :value.sync="count" min="1" style="height: .6rem; width: 2rem; background-color: #fff; color: rgb(207, 168, 132); float: right; margin-right: .28rem;"></nut-stepper>
             <!-- <button @click="reduceCount">-</button><input type="text" value="1"><button @click="addCount">+</button> -->
 
                         <!-- <div><button @click="reduceCount">-</button>
@@ -260,15 +261,18 @@ export default {
         var shoppingGoodNumber = this.count;
         console.log(shoppingGoodSize)
         console.log(shoppingGoodSweet)
-        axios.post('/lc/addshopping',{token,goodName,userTel,shoppingGoodTemperture,shoppingGoodSweet,shoppingGoodSize,shoppingGoodNumber}).then(result=>{
+        if(localStorage.getItem('token')!==null){
+            axios.post('/lc/addshopping',{token,goodName,userTel,shoppingGoodTemperture,shoppingGoodSweet,shoppingGoodSize,shoppingGoodNumber}).then(result=>{
             console.log(result.data);
-            if(result.data.code==="0"){
-                  this.$router.push('/err')
-            } else{
-               document.getElementsByClassName("xiangqing")[0].style.display="none";
-            }
-           
+            if(result.data.code==="1"){
+                    document.getElementsByClassName("xiangqing")[0].style.display="none";
+            } 
         })
+        }
+        else{
+          this.$router.push('/err')
+        }
+       
         // var 
       },
 
@@ -279,7 +283,8 @@ export default {
           console.log(goodName);
           console.log(token);
           console.log(userTel)
-          axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
+          if(localStorage.getItem('token')!==null){
+            axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
             console.log(result.data)
              if(result.data.errMsg==="收藏成功"){
                  this.img2=true
@@ -289,6 +294,10 @@ export default {
             }
               
           })
+          }
+          else{
+            this.$router.push('/err')
+          }
       },
       change(value){
         // console.log(e.currentTarget);
@@ -320,6 +329,11 @@ export default {
    margin: .5rem 0rem 0rem .5rem;
    
 }
+/* .zhezhaoceng{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+} */
 .xiangqing-guige>ul>li>button{
   height: .6rem;
   width: 1.5rem;
@@ -337,6 +351,7 @@ export default {
   .cebl{
       /* position: absolute; */
       float: left;
+      
   }
   .caidan{
       width: 70%;
@@ -383,7 +398,8 @@ export default {
   }
   .nut-tab-leftnav{
       padding: 0 !important;
-      height: 8rem;
+      height: 9.2rem;
+      margin-bottom: 1rem;
   }
   .nut-tab .nut-tab-item{
     height: 100%;
