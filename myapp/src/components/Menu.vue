@@ -258,7 +258,13 @@ export default {
         console.log(shoppingGoodSize)
         console.log(shoppingGoodSweet)
         axios.post('/lc/addshopping',{token,goodName,userTel,shoppingGoodTemperture,shoppingGoodSweet,shoppingGoodSize,shoppingGoodNumber}).then(result=>{
-            console.log(result.data)
+            console.log(result.data);
+            if(result.data.code==="0"){
+                  this.$router.push('/err')
+            } else{
+               document.getElementsByClassName("xiangqing")[0].style.display="none";
+            }
+           
         })
         // var 
       },
@@ -267,7 +273,10 @@ export default {
           var token=localStorage.getItem('token');
           var userTel=localStorage.getItem('tel');
           var goodName=this.xiangqing.goodName;
-          axios.post('/lc/addshopping',{token,goodName,userTel}).then(result=>{
+          console.log(goodName);
+          console.log(token);
+          console.log(userTel)
+          axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
             console.log(result.data)
           })
       },
