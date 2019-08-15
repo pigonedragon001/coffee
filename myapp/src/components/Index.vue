@@ -15,10 +15,11 @@
         </div>
         <div class="kaiguan">
           <!-- <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt=""> -->
-          <mt-switch v-model="value" style="margin-top: .3rem; width:1rem;" ></mt-switch>
+          <mt-switch v-model="value" style="margin-top: .3rem; width:1rem;"></mt-switch>
         </div>
       </li>
       <li>
+        <router-link to="/menu">
         <div class="shouyelebiao">
           <p>现在下单</p>
           <span>ORDER NOW</span>
@@ -26,6 +27,7 @@
         <div style="width:100%;">
           <img style="position:absolute;width:.6rem;height:.6rem;right:.4rem;top:.14rem" src="../../public/image/more.svg" alt="">
         </div>
+        </router-link>
       </li>
       <li>
         <div class="shouyelebiao">
