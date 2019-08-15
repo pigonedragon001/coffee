@@ -24,7 +24,7 @@
             </div>
             <div class="content">
               <span>{{product.goodName}}</span>
-              <p>Mocha</p>
+              <p>luckin coffee</p>
               <div class="jiage">
                 <h5>￥{{product.goodPrice}}</h5>
                 <p><img width="30" height="35" src="../../public/image/tianjia.svg"></p>

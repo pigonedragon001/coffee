@@ -15,7 +15,7 @@
                         <span style="color:rgb(104, 104, 104)">{{items.address.place}}<br>
                             <span style=" font-size:.25rem; margin-top: .15rem; color: rgb(192, 191, 191);">{{product.orderIdGoodName}} 共{{product.orderGoodNumber}}件商品</span></span><span style="color: rgb(192, 191, 191); font-size:.25rem;">{{items.time}}</span></p>
                     <p>
-                        <span style="color:rgb(226, 195, 95)">￥{{product.orderIdUserId}}</span>
+                        <span style="color:rgb(226, 195, 95)">￥{{product.goodPrice}}</span>
                         <span style="border: 1px solid rgb(192, 191, 191); padding: .04rem .12rem; color:rgb(104, 104, 104)">再来一单</span>
                     </p>
                 </div>
@@ -49,6 +49,11 @@
             axios.post('/lc/allOrder', { userTel, token }).then((result) => {
                 console.log(result.data);
                 this.items.products=result.data;
+                // this.items.products.goodPrice
+                for(let item of this.items.products){
+                    item.goodPrice=Math.floor((Math.random()*10+10));
+                }
+                console.log(this.items.products);
             })
         },
         methods: {

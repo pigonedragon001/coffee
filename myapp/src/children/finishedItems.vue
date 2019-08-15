@@ -14,7 +14,7 @@
                             <span style="color: rgb(192, 191, 191); font-size:.25rem;">{{items.time}}</span>
                         </p>
                         <p>
-                            <span style="color:rgb(226, 195, 95)">￥{{product.orderIdUserId}}</span>
+                            <span style="color:rgb(226, 195, 95)">￥{{product.goodPrice}}</span>
                             <span style="border: 1px solid rgb(192, 191, 191); padding: .04rem .12rem; color:rgb(104, 104, 104)">再来一单</span>
                         </p>
                     </div>
@@ -50,6 +50,9 @@
             axios.post('/lc/completeOrder', { userTel, token }).then((result) => {
                 console.log(result.data);
                 this.items.products = result.data;
+                for(let item of this.items.products){
+                    item.goodPrice=Math.floor((Math.random()*10+10));
+                }
             })
         },
         methods: {
