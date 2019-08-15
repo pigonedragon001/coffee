@@ -15,7 +15,7 @@
         </div>
         <div class="kaiguan">
           <!-- <img style="position:absolute;width:30px;height:30px;right:20px;top:7.5px" src="../../public/image/more.svg" alt=""> -->
-          <mt-switch v-model="value" style="margin-top: .3rem; width:1rem;" ></mt-switch>
+          <mt-switch v-model="value" style="margin-top: .3rem; width:1rem;"></mt-switch>
         </div>
       </li>
       <li>
