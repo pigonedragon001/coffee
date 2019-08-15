@@ -56,6 +56,8 @@
 <style scoped>
     .allItems{
         width: 100%;
+        height: 100%;
+        background: WhiteSmoke;
         
     }
     .allItems ul{

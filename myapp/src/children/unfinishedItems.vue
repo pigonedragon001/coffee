@@ -54,6 +54,8 @@
 <style scoped>
     .unfinishedItems {
         width: 100%;
+        height: 100%;
+        background: WhiteSmoke;
     }
 
     .unfinishedItems ul {

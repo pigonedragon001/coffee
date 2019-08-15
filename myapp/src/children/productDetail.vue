@@ -66,6 +66,7 @@
     .productDetail{
         width: 100%;
         font-size:0.3rem;
+        height: 100%;
         background: WhiteSmoke;
     }
     .head{
