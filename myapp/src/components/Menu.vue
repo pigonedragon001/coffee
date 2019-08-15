@@ -212,7 +212,7 @@ export default {
       },
       tabSwitch(e){
         console.log(e);
-        axios.post('http://192.168.52.95:8080/lc/goodsmess',).then(result=>{
+        axios.post('/lc/goodsmess',).then(result=>{
             console.log(result.data)
             this.editableTabs[e].content.products = [];
             for(let item of result.data.response){
