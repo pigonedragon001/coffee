@@ -22,12 +22,12 @@
         <div class="useMsg">
             <ul>
                 <li>使用咖啡钱包</li>
-                <li>使用优惠券</li>
-                <li>支付方式</li>
+                <li class="discount"><span>使用优惠券</span> <span>无</span></li>
+                <li class="getMethod"><span>支付方式</span><p><span>微信<input style="width: 0.3rem;height: 0.3rem;" type="radio" name="pay"></span><span>支付宝<input checked style="width: 0.3rem;height: 0.3rem;" type="radio" name="pay"></span></p></li>
             </ul>
             <ul>
-                <li>取餐方式</li>
-                <li>备注特殊要求</li>
+                <li>取餐方式:&emsp;商家配送</li>
+                <li>备注特殊要求:&emsp;<input class="setMsg" type="text" placeholder="如有其它需要,请填写"> </li>
             </ul>
         </div>
         <div class="footPay">
@@ -226,6 +226,25 @@
         height: 1rem;
         border-bottom: 1px solid #333;
         line-height: 1rem;
+        font-size: 0.3rem;
+    }
+    
+    .setMsg{
+        height: 0.8rem;
+        border: none;
+    }
+
+    .discount{
+        display: flex;
+        padding-right: 0.3rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .getMethod{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .footPay {

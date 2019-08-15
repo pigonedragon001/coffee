@@ -136,7 +136,7 @@
     }
     .keep button{
         height: 0.8rem;
-        background: yellow;
+        background: skyblue;
         font-size: 0.5rem;
         width: 90%;
         border: none;
