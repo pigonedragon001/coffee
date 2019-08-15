@@ -39,7 +39,8 @@
   </div>
   <div > 
     <div class="xiangqing"  style="font-size: .25rem;">
-      <div @click="like" class="xiangqing-shoucang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
+      <div v-if="!img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
+       <div v-if="img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/love4.svg" class="shoucang"></div>
       <div class="xiangqingyinchang" @click="xiangqingyinchang(e)"><img src="../../public/image/chacha2.svg" class="cha"></div>
       <div class="xiangqingtu"><img :src="xiangqing.goodImgPath" class="xiangqingtu" height="250"></div>
       <div class="xiangqing-leirong">
@@ -120,7 +121,7 @@ export default {
           index:1,
         activeKey: 0,
         positionNavCurr:'top',
-
+         img2:false,
         editableTabs:[
         {
           tabTitle:'人气Top',
@@ -171,6 +172,8 @@ export default {
           }
         },
       ]
+
+       
         };
 
         msg:'k'
@@ -279,6 +282,13 @@ export default {
           console.log(userTel)
           axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
             console.log(result.data)
+             if(result.data.errMsg==="收藏成功"){
+                 this.img2=true
+             }
+            if(result.data.errMsg==="取消成功"){
+              this.img2=false
+            }
+              
           })
       },
       change(value){

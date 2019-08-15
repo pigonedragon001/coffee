@@ -125,7 +125,7 @@
     .add button {
         height: 0.8rem;
         font-size: 0.5rem;
-        background: yellow;
+        background: skyblue;
         line-height: 0.8rem;
         width: 90%;
         border: none;

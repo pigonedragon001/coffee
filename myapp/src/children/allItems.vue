@@ -1,31 +1,25 @@
 <template>
     <div class="allItems">
         <ul>
-            <li @click="gotoDetail">
-                <p><span>自提订单: {{items.num}}</span><span>已取消</span></p>
+            <li @click="gotoDetail" v-for="(product, index) in items.products" :key="index">
+                <p><span>自提订单: {{items.num}} </span>
+                    <template v-if="product.orderPay==='true'">
+                        <span>已支付</span>
+                   </template> 
+                   <template v-else>
+                        <span>未支付</span>
+                  </template> 
+                </p>
                 <div>
-                    <p><span>{{items.address[0].place}}<br>{{items.products[0].name}} 共{{items.total}}件商品</span><span>{{items.time}}</span></p>
-                    <p><span>￥{{items.products[0].price*items.products[0].count}}</span><span>再来一单</span></p>
-                </div>
-            </li>
-            <li>
-                <p><span>自提订单:{{items.num}}</span><span>已取消</span></p>
-                <div>
-                    <p><span>{{items.address[0].place}}<br>{{items.products[0].name}} 共{{items.total}}件商品</span><span>{{items.time}}</span></p>
-                    <p><span>￥{{items.products[0].price*items.products[0].count}}</span><span>再来一单</span></p>
-                </div>
-            </li>
-            <li>
-                <p><span>自提订单:{{items.num}}</span><span>已取消</span></p>
-                <div>
-                    <p><span>{{items.address[0].place}}<br>{{items.products[0].name}} 共{{items.total}}件商品</span><span>{{items.time}}</span></p>
-                    <p><span>￥{{items.products[0].price*items.products[0].count}}</span><span>再来一单</span></p>
+                    <p><span>{{items.address.place}}<br>{{product.orderIdGoodName}} 共{{product.orderGoodNumber}}件商品</span><span>{{items.time}}</span></p>
+                    <p><span>￥{{product.orderIdUserId}}</span><span>再来一单</span></p>
                 </div>
             </li>
         </ul>
     </div>
 </template>
 <script>
+    import axios from 'axios';
     export default {
         data() {
             return {
@@ -34,13 +28,9 @@
                     time:'2019-08-11 15:02',
                     total:6,
                     products: [
-                        { id: '1', name: '拿铁', tem: '热', sugar: '全糖', level: '大', price: 20, count: 1 },
-                        { id: '2', name: '抹茶', tem: '冷', sugar: '少糖', level: '小', price: 17, count: 1 },
-                        { id: '1', name: '焦糖', tem: '温', sugar: '多糖', level: '中', price: 47, count: 1 },
+                       
                     ],
-                    address:[
-                        {user:'张三',place:'金融港店(NO.1591)',phone:'111111'},
-                    ]
+                    address: {user:'张三',place:'金融港店(NO.1591)',phone:'111111'}, 
                 }
             }
         },
@@ -49,6 +39,12 @@
                 this.items.total+=product.count
                 // console.log(this.items.total);
             }
+            let userTel = localStorage.getItem('tel');
+            let token = localStorage.getItem('token');
+            axios.post('/lc/allOrder', { userTel, token }).then((result) => {
+                console.log(result.data);
+                this.items.products=result.data;
+            })
         },
         methods: {
             gotoDetail(){
@@ -60,14 +56,18 @@
 <style scoped>
     .allItems{
         width: 100%;
+        height: 100%;
+        background: WhiteSmoke;
+        
     }
     .allItems ul{
-        margin-top: 0.1rem;
+        margin-top: 0.2rem;
+        margin-bottom: 1.5rem;
     }
     .allItems li{
         padding: 0 0.2rem;
-        background: skyblue;
         margin-bottom: 0.2rem;
+        background: #fff;
     }
     p{
         display: flex;
