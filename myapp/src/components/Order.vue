@@ -4,8 +4,8 @@
         <div class="items">
             <ul>
                 <li><router-link to="/all">全部</router-link></li>
-                <li><router-link to="/finished">未完成</router-link></li>
-                <li><router-link to="/unfinished">已完成</router-link></li>
+                <li><router-link to="/unfinished">未完成</router-link></li>
+                <li><router-link to="/finished">已完成</router-link></li>
             </ul>
             <router-view></router-view>
         </div>
@@ -42,6 +42,7 @@
     .order {
         width: 100%;
         font-size: 0.3rem;
+        background: WhiteSmoke;
     }
 
     li {
@@ -54,7 +55,7 @@
         text-align: center;
         font-size: 0.4rem;
         line-height: 1rem;
-        background: yellow;
+        background: #fff;
     }
 
     .items>ul{
@@ -62,7 +63,8 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: red;
+        background: #fff;
+        border-top: 1px solid #333;
     }
 
 </style>

@@ -32,7 +32,7 @@
         },
         methods: {
             gotoBack(){
-                history.back();
+                this.$router.push('/account');
             },
             keepData(){
                 // console.log(this.myplace);

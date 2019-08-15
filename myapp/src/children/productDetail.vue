@@ -66,13 +66,14 @@
     .productDetail{
         width: 100%;
         font-size:0.3rem;
+        background: WhiteSmoke;
     }
     .head{
         display: flex;
         width: 100%;
         justify-content: center;
         height: 1rem;
-        background: yellow;
+        background: #fff;
         align-items: center;
         position: fixed;
         top: 0px;
@@ -84,7 +85,7 @@
         font-size: 0.6rem;
         border: none;
         margin-left: 0.3rem;
-        background: yellow;
+        background: #fff;
         position: fixed;
     }
 
@@ -92,7 +93,7 @@
         margin-top: 1rem;
         padding: 0.2rem;
         height: 2.4rem;
-        background: skyblue;
+        background: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -105,8 +106,8 @@
 
     .address{
         height: 1.6rem;
-        margin-top: 10px;
-        background: yellowgreen;
+        margin-top: 0.2rem;
+        background: #fff;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -118,12 +119,12 @@
 
     .products{
         margin-top: 0.2rem;
-        background: green;
+        background: #fff;
         padding: 0 0.2rem;
     }
     .products p{
         height: 1rem;
-        background: red;
+        background: #fff;
         line-height: 1rem;
         display: flex;
         justify-content: space-between;
