@@ -38,20 +38,20 @@
 
 
           <el-form-item>
-                <label style="font-size:0.3rem" @click="clickUser">
-                  用户：<input ref="uInp" style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem" value="用户"/>
+                <label style="font-size:0.3rem;margin-right:2.4rem" @click="clickUser">
+                  <span style="color: silver">用户</span>  <input ref="uInp" style="width: 0.3rem;height: 0.3rem;" type="radio" name="selitem" value="用户"/>
                 </label>
                 <label style="font-size:0.3rem" @click="clickshop">
-                  商家：<input ref="sInp"  style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem" value="商家"/>
+                <span style="color: silver">商家</span>  <input ref="sInp"  style="width: 0.3rem;height: 0.3rem;" type="radio" name="selitem" value="商家"/>
                 </label>  
           </el-form-item>
           
             <el-form-item>
-                <label style="font-size:0.3rem" @click="clickman">
-                  男：<input ref="uInp1" style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem1" value="男"/>
+                <label style="font-size:0.3rem;margin-right:2.8rem" @click="clickman">
+                 <span style="color: silver">男</span><input ref="uInp1" style="width: 0.3rem;height: 0.3rem;" type="radio" name="selitem1" value="男"/>
                 </label>
                 <label style="font-size:0.3rem" @click="clickgirl">
-                  女：<input ref="sInp1"  style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem1" value="女"/>
+                  <span style="color: silver">女</span><input ref="sInp1"  style="width: 0.3rem;height: 0.3rem;" type="radio" name="selitem1" value="女"/>
                 </label>  
           </el-form-item>
 
@@ -271,6 +271,7 @@ export default {
   right: 0;
   left: 0;
   bottom: 0;
+   height: 100%;
 }
 #register {
   max-width: 6.8rem;
@@ -280,6 +281,7 @@ export default {
   border-radius: 0.2rem;
   position: relative;
   z-index: 9;
+  height: 100%;
 }
 .title {
   font-size: 0.52rem;
@@ -350,4 +352,6 @@ export default {
      padding-top:0;
      top:88%
    }
+
+  
 </style>
