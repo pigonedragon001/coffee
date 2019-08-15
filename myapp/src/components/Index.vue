@@ -2,9 +2,9 @@
 <div>
     <div style="height: 3rem">
     <mt-swipe :show-indicators="false">
-        <mt-swipe-item><img src="../assets/092256pfabb5dfx4aic2jt.jpg" alt="" class="lunboimg"></mt-swipe-item>
-        <mt-swipe-item><img src="../assets/5bc0575c5ef17.jpg" alt="" class="lunboimg"></mt-swipe-item>
-        <mt-swipe-item><img src="../assets/20180920161429_Jh8FP.jpeg.jpg" alt="" class="lunboimg"></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/lunbo1.gif" alt="" class="lunboimg" height="300px"></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/lunbo2.jpg" alt="" class="lunboimg" height="300px"></mt-swipe-item>
+        <mt-swipe-item><img src="../assets/lunbo8.png" alt="" class="lunboimg" height="300px"></mt-swipe-item>
     </mt-swipe>
     <ul class="message1" style="font-size: .35rem;">
       
@@ -30,13 +30,13 @@
         </router-link>
       </li>
       <li>
-        <div class="shouyelebiao">
-          <p>咖啡钱包</p>
-          <span>COFFEE WALLET</span>
-        </div>
-        <div>
-          <img style="position:absolute;width:.6rem;height:.6rem;right:.4rem;top:.14rem" src="../../public/image/more.svg" alt="">
-        </div>
+          <div class="shouyelebiao">
+            <p>兑换优惠</p>
+            <span>COFFEE WALLET</span>
+          </div>
+          <div>
+            <img style="position:absolute;width:.6rem;height:.6rem;right:.4rem;top:.14rem" src="../../public/image/more.svg" alt="">
+          </div>
       </li>
       <li>
         <div class="shouyelebiao">
@@ -67,7 +67,11 @@
 
 
 export default {
- 
+      data(){
+        return{
+          value:'',
+        }
+      }
 }
 </script>
 
