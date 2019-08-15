@@ -13,6 +13,15 @@ import usermsg from '../views/Usermsg.vue';
 import err from '../views/err.vue';
 import mylike from '../views/mylike.vue';
 
+import allItems from '../children/allItems.vue';
+import finishedItems from '../children/finishedItems.vue';
+import unfinishedItems from '../children/unfinishedItems.vue';
+import account from '../children/account.vue';
+import myaddress from '../children/address.vue'
+import paymoney from '../children/paymoney.vue'
+import productDetail from '../children/productDetail.vue'
+import getAddress from '../children/getAddress.vue'
+
 const router=new VueRouter({
     routes:[
         {
@@ -25,11 +34,57 @@ const router=new VueRouter({
         },
         {
             path:'/order',
-            component:order
+            component:order,
+            children:[
+                {
+                    path:'/all',
+                    component:allItems
+                },
+                {
+                    path:'/finished',
+                    component:finishedItems
+                },
+                {
+                    path:'/unfinished',
+                    component:unfinishedItems
+                },
+                {
+                    path:'/order',
+                    redirect:'/all'
+                },
+            ]
+                
+        },
+        
+        {
+            path:'/productDetail',
+            component:productDetail
         },
         {
             path:'/shoppingcar',
-            component:shoppingcar
+            component:shoppingcar,
+            // children:[
+            //     {
+            //         path:'/account',
+            //         component:account,
+            //     }
+            // ]
+        },
+        {
+            path:'/account',
+            component:account,
+        },
+        {
+            path:'/getAddress',
+            component:getAddress
+        },
+        {
+            path:'/myaddress',
+            component:myaddress,
+        },
+        {
+            path:'/paymoney',
+            component:paymoney,
         },
         {
             path:'/center',

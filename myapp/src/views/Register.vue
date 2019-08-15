@@ -67,7 +67,7 @@
   
 </template>
 
-<script src="../../public/js/jq.js"></script>
+
 <script>
  import 'element-ui/lib/theme-chalk/index.css';
  import axios from 'axios';

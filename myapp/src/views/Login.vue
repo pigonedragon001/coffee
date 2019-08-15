@@ -6,7 +6,7 @@
          </p>
      <div class="vv">
         <el-input v-model="Phone" placeholder="请输入手机号" class="kuang"></el-input>
-        <el-input v-model="Password" placeholder="请输入密码" class="kuang"></el-input>
+        <el-input type="password" v-model="Password" placeholder="请输入密码" class="kuang"></el-input>
         <el-button type="primary" class="ddl" @click="Goto">登陆</el-button>
         <p class="P1" @click="Findpwd">忘记密码？</p>
         <div class="kuang" style="color:red">{{this.ts}}</div>
