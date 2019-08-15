@@ -1,12 +1,17 @@
 <template>
    <div>
-     <h2 class="dl">找回</h2>
+        <p class="p22">
+                  <img class="Pimg" @click="ret" src="../../public/image/return.svg" alt="">
+                   <span class="meg1">找回密码</span>
+        </p>
+   <div class="vv">
      <el-input v-model="Phone" placeholder="请输入手机号" class="kuang"></el-input>
      <el-button type="primary" class="ddl" @click="commit">提交</el-button>
       <div class="kuang">{{this.qus}}</div>
      <el-input v-model="ma"  class="kuang" placeholder="请输入密保答案"></el-input>
      <el-button type="primary" class="ddl" @click="commit1">提交</el-button>
      <div class="kuang" style="color:red">{{this.ts}}</div>
+   </div>
    </div>
 </template>
 
@@ -25,8 +30,8 @@ export default {
     methods: {
         commit(){
              var userTel=this.Phone;
-             axios.post('http://192.168.52.95:8080/lc/pwdFind',{userTel}).then(result=>{
-                //  console.log(result.data)
+             axios.post('/lc/pwdFind',{userTel}).then(result=>{
+                 console.log(result.data)
                  if(result.data.code==="1"){
                      this.qus=result.data.response.userQuestion;
                  }else{
@@ -38,15 +43,18 @@ export default {
              var userTel=this.Phone;
              var userQuestion=this.qus;
              var userAnswer=this.ma;
-         axios.post('http://192.168.52.95:8080/lc/quesCheck',{userTel,userQuestion,userAnswer}).then(result=>{
-            //  console.log(result.data)
+         axios.post('/lc/quesCheck',{userTel,userQuestion,userAnswer}).then(result=>{
+             console.log(result.data)
              if(result.data.code==="1"){
                  this.$router.push('/login')
              }else{
                     this.ts=result.data.errMsg
              }
          })
-        }
+        },
+         ret(){
+            this.$router.go(-1);
+        },
     },
 }
 </script>

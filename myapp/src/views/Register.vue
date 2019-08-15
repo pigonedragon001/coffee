@@ -38,10 +38,22 @@
 
 
           <el-form-item>
-                <el-radio v-model="radio" label="男">男</el-radio>
-                <el-radio v-model="radio" label="女">女</el-radio>
+                <label style="font-size:0.3rem" @click="clickUser">
+                  用户：<input ref="uInp" style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem" value="用户"/>
+                </label>
+                <label style="font-size:0.3rem" @click="clickshop">
+                  商家：<input ref="sInp"  style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem" value="商家"/>
+                </label>  
           </el-form-item>
-
+          
+            <el-form-item>
+                <label style="font-size:0.3rem" @click="clickman">
+                  男：<input ref="uInp1" style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem1" value="男"/>
+                </label>
+                <label style="font-size:0.3rem" @click="clickgirl">
+                  女：<input ref="sInp1"  style="width: 0.5rem;height: 0.5rem;" type="radio" name="selitem1" value="女"/>
+                </label>  
+          </el-form-item>
 
           <el-form-item>
             <el-button type="primary" @click="submitForm('ruleForm2')" style="width:100%;">注册</el-button>
@@ -149,10 +161,9 @@ export default {
         ma:[{validator:checkma,trigger:'blur'}]
       },
 
-
-      radio: '1',
-      userType:'用户',
-      ts1:''
+      userType:'',
+      ts1:'',
+      userSex:''
     }
   }, 
   methods: {
@@ -162,7 +173,7 @@ export default {
          var userName=this.ruleForm2.username;
          var userTel=this.ruleForm2.tel;
          var userPwd=this.ruleForm2.pass;
-         var userSex=this.radio;
+         var userSex=this.userSex;
          var userType=this.userType;
          var userQuestion=this.ruleForm2.mb;
          var userAnswer=this.ruleForm2.ma;
@@ -205,7 +216,23 @@ export default {
 
     gotoLogin() {
         this.$router.push('/login')
-    }
+    },
+   clickUser(){
+  console.log(this.$refs.uInp.value)
+      this.userType=this.$refs.uInp.value
+  },
+   clickshop(){
+  console.log(this.$refs.sInp.value)
+    this.userType=this.$refs.sInp.value
+  },
+  clickman(){
+    console.log(this.$refs.uInp1.value)
+    this.userSex=this.$refs.uInp1.value
+  },
+  clickgirl(){
+    console.log(this.$refs.sInp1.value)
+    this.userSex=this.$refs.sInp1.value
+  }
   }
 };
 </script>

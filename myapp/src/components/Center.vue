@@ -58,7 +58,9 @@ export default {
        },
        methods: {
            goto(){
-                this.$router.push('/register')
+                if(localStorage.getItem('token')===null){
+                     this.$router.push('/register')
+                }
            },
            togo(){
                 var token=localStorage.getItem('token');

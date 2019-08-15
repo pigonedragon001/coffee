@@ -113,6 +113,10 @@ const router=new VueRouter({
         {
             path:'/mylike',
             component:mylike
+        },
+        {
+            path: '/',
+            redirect: '/index'
         }
     ]
 })

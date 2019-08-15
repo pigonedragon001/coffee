@@ -5,33 +5,12 @@
                    <span class="meg1">我的收藏</span>
          </p>
          <ul class="mylikelist">
-             <li>
-                 <img src="http://img0.imgtn.bdimg.com/it/u=3485019702,472626870&fm=26&gp=0.jpg" alt="">
-                 <span class="mylikename">朱一龙海报</span>
-                 <span class="mylikeprice">￥98</span>
-                 <span class="delmylike">取消</span>
+             <li v-for="good in mylikelist" :key="good.goodId">
+                 <img :src="good.goodImgPath" alt="">
+                 <span class="mylikename">{{good.goodName}}</span>
+                 <span class="mylikeprice">￥{{good.goodPrice}}</span>
+                 <span class="delmylike" @click="delmylike(good)">取消</span>
              </li>
-
-              <!-- <li>
-                 <img src="http://img0.imgtn.bdimg.com/it/u=3485019702,472626870&fm=26&gp=0.jpg" alt="">
-                 <span class="mylikename">朱一龙海报</span>
-                 <span class="mylikeprice">￥98</span>
-                 <span class="delmylike">取消</span>
-             </li>
-
-              <li>
-                 <img src="http://img0.imgtn.bdimg.com/it/u=3485019702,472626870&fm=26&gp=0.jpg" alt="">
-                 <span class="mylikename">朱一龙海报</span>
-                 <span class="mylikeprice">￥98</span>
-                 <span class="delmylike">取消</span>
-             </li>
-
-              <li>
-                 <img src="http://img0.imgtn.bdimg.com/it/u=3485019702,472626870&fm=26&gp=0.jpg" alt="">
-                 <span class="mylikename">朱一龙海报</span>
-                 <span class="mylikeprice">￥98</span>
-                 <span class="delmylike">取消</span>
-             </li> -->
          </ul>
     </div>
 </template>
@@ -49,13 +28,30 @@ export default {
          ret(){
             this.$router.go(-1);
         },
+        delmylike(good){
+             for(let index in this.mylikelist){
+                 if(good.goodId===this.mylikelist[index].goodId){
+                    //  this.mylikelist.splice(index,1)
+                     var goodName=good.goodName;
+                     var userTel=localStorage.getItem('tel');
+                     var token=localStorage.getItem('token');
+                     axios.post('/lc/addcollect',{goodName,userTel,token}).then(result=>{
+                         console.log(result.data)
+                         if(result.data.code=="1"){
+                             this.mylikelist.splice(index,1)
+                         }
+                     })
+                 }
+             }
+        }
     },
     mounted() {
         var token=localStorage.getItem('token');
         var userTel=localStorage.getItem('tel');
         axios.post('/lc/selectcollect',{token,userTel}).then(result=>{
             console.log(result.data)
-            this.mylikelist=result.data.response
+            this.mylikelist=result.data.response;
+            this.goodName=result.data.goodName;
         })
     },
 }
