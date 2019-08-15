@@ -37,7 +37,7 @@
     </nut-tab-panel>
 </nut-tab>
   </div>
-  <div > 
+  <div class="zhezhaoceng"> 
     <div class="xiangqing"  style="font-size: .25rem;">
       <div v-if="!img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/shoucang.svg" class="shoucang"></div>
        <div v-if="img2" @click="like" class="xiangqing-shoucang"><img src="../../public/image/love4.svg" class="shoucang"></div>
@@ -261,15 +261,18 @@ export default {
         var shoppingGoodNumber = this.count;
         console.log(shoppingGoodSize)
         console.log(shoppingGoodSweet)
-        axios.post('/lc/addshopping',{token,goodName,userTel,shoppingGoodTemperture,shoppingGoodSweet,shoppingGoodSize,shoppingGoodNumber}).then(result=>{
+        if(localStorage.getItem('token')!==null){
+            axios.post('/lc/addshopping',{token,goodName,userTel,shoppingGoodTemperture,shoppingGoodSweet,shoppingGoodSize,shoppingGoodNumber}).then(result=>{
             console.log(result.data);
-            if(result.data.code==="0"){
-                  this.$router.push('/err')
-            } else{
-               document.getElementsByClassName("xiangqing")[0].style.display="none";
-            }
-           
+            if(result.data.code==="1"){
+                    document.getElementsByClassName("xiangqing")[0].style.display="none";
+            } 
         })
+        }
+        else{
+          this.$router.push('/err')
+        }
+       
         // var 
       },
 
@@ -280,7 +283,8 @@ export default {
           console.log(goodName);
           console.log(token);
           console.log(userTel)
-          axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
+          if(localStorage.getItem('token')!==null){
+            axios.post('/lc/addcollect',{token,goodName,userTel}).then(result=>{
             console.log(result.data)
              if(result.data.errMsg==="收藏成功"){
                  this.img2=true
@@ -290,6 +294,10 @@ export default {
             }
               
           })
+          }
+          else{
+            this.$router.push('/err')
+          }
       },
       change(value){
         // console.log(e.currentTarget);
@@ -321,6 +329,11 @@ export default {
    margin: .5rem 0rem 0rem .5rem;
    
 }
+/* .zhezhaoceng{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+} */
 .xiangqing-guige>ul>li>button{
   height: .6rem;
   width: 1.5rem;
