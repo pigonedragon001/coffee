@@ -2,9 +2,9 @@
 <div class="a">
     <div style="height: 3rem">
         <van-swipe :autoplay="3000" indicator-color="white" style="height: 3rem;">
-            <van-swipe-item><img src="../assets/092256pfabb5dfx4aic2jt.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
-            <van-swipe-item><img src="../assets/5bc0575c5ef17.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
-            <van-swipe-item><img src="../assets/20180920161429_Jh8FP.jpeg.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo5.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo11.jpg" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
+            <van-swipe-item><img src="../assets/lunbo9.png" alt="" class="lunboimg" style="height: 3rem;"></van-swipe-item>
         </van-swipe>
   </div>
   <div>
@@ -75,9 +75,10 @@
           
           <div class="shuliang"> 
             <div class="jiage"  style="float: left; line-height: .6rem;">
-            <h4 style="padding-left: .25rem;">￥24  {{count}}</h4>
+              <h4 style="float: left; padding-left: .2rem;">单价:￥</h4>
+            <h4 style="padding-left: .05rem; color: rgb(207, 168, 132); float: left;">{{xiangqing.goodPrice}}</h4>
           </div>
-            <nut-stepper :simple="false" :value.sync="count" min="1" style="height: .6rem; width: 2rem; background-color: #fff; color: rgb(67, 111, 255); float: right; margin-right: .28rem;"></nut-stepper>
+            <nut-stepper :simple="false" :value.sync="count" min="1" style="height: .6rem; width: 2rem; background-color: #fff; color: rgb(207, 168, 132); float: right; margin-right: .28rem;"></nut-stepper>
             <!-- <button @click="reduceCount">-</button><input type="text" value="1"><button @click="addCount">+</button> -->
 
                         <!-- <div><button @click="reduceCount">-</button>
@@ -327,6 +328,7 @@ export default {
   .cebl{
       /* position: absolute; */
       float: left;
+      
   }
   .caidan{
       width: 70%;
@@ -373,7 +375,8 @@ export default {
   }
   .nut-tab-leftnav{
       padding: 0 !important;
-      height: 8rem;
+      height: 9.2rem;
+      margin-bottom: 1rem;
   }
   .nut-tab .nut-tab-item{
     height: 100%;
