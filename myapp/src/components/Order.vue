@@ -34,7 +34,12 @@
                 //     ]
                 // }
             }
-        }
+        },
+        mounted() {
+            if(localStorage.getItem('token')===null){
+                this.$router.push('/err');
+            }
+        },
     }
 </script>
 
@@ -65,6 +70,7 @@
         align-items: center;
         background: #fff;
         border-top: 1px solid #333;
+        color: #999;
     }
 
 </style>

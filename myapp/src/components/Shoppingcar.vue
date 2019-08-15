@@ -5,18 +5,26 @@
         <div class="products">
             <ul>
                 <li v-for="product in products" :key="product.id">
-                    <p><input type="checkbox" :checked='product.shoppingChecked' @click='changeFlag(product)'></p>
-                    <p>{{ product.goodName }}<br>{{ product.shoppingGoodTemperture }}/{{ product.shoppingGoodSweet }}/{{ product.shoppingGoodSize }}
+                    <p>
+                        <!-- <input type="checkbox" :checked='product.shoppingChecked' @click='changeFlag(product)'> -->
+                        <template v-if="product.shoppingChecked">
+                            <button @click='changeFlag(product)' style="background: skyblue;color:#fff">√</button>
+                        </template>
+                        <template v-else>
+                            <button @click='changeFlag(product)' style="background: #fff;border:1px solid skyblue;"></button>
+                        </template>       
+                    </p>
+                    <p>{{ product.goodName }}<br><span style="font-size: .25rem">{{ product.shoppingGoodTemperture }}/{{ product.shoppingGoodSweet }}/{{ product.shoppingGoodSize }}</span>
                     </p>
                     <p>￥{{ product.shoppingGoodPrice }} </p>
-                    <div><button @click="reduceCount(product)">-</button>
-                        <p>{{ product.shoppingGoodNumber }}</p><button @click="addCount(product)">+</button>
+                    <div><button @click="reduceCount(product)" style="background: #fff;border:1px solid skyblue;color: skyblue;font-size: 0.5rem;font-weight: bold;">-</button>
+                        <p>{{ product.shoppingGoodNumber }}</p><button style="background: skyblue;color: #fff;" @click="addCount(product)">+</button>
                     </div><button @click='delProduct(product)'>×</button>
                 </li>
             </ul>
         </div>
         <div class="choiceOther">
-            <p><span>猜你喜欢</span><button @click='changeProducts'>换一批</button></p>
+            <p><span>猜你喜欢</span><button  style="font-size: .25rem" @click='changeProducts'>换一批</button></p>
             <div>
                 <ul>
                     <li v-for="product in guessYouLike" :key="product.id">
@@ -28,7 +36,7 @@
             </div>
         </div>
         <div class="pay">
-            <p>应付合计: <span>￥{{total}}</span></p><button @click='goToAccount'>去结算</button>
+            <p>应付合计: <span>￥{{total}}</span></p><button @click='goToAccount' style="color: #fff;">去结算</button>
         </div>
     </div>
 </template>
@@ -202,7 +210,7 @@
         align-items: center;
         box-sizing: border-box;
         background: #ffffff;
-        border-bottom: 1px solid red;
+        border-bottom: 1px solid rgb(192, 191, 191);
         /* overflow: hidden; */
 
     }
@@ -226,6 +234,7 @@
     .products ul li button {
         width: 0.5rem;
         height: 0.5rem;
+        line-height: 0.5rem;
         border-radius: 50%;
         border: none;
         font-size: 0.3rem;

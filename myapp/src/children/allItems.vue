@@ -2,7 +2,7 @@
     <div class="allItems">
         <ul>
             <li @click="gotoDetail" v-for="(product, index) in items.products" :key="index">
-                <p><span>自提订单: {{items.num}} </span>
+                <p style="color: rgb(192, 191, 191); font-size:.25rem;"><span>自提订单: {{items.num}} </span>
                     <template v-if="product.orderPay==='true'">
                         <span>已支付</span>
                    </template> 
@@ -11,8 +11,13 @@
                   </template> 
                 </p>
                 <div>
-                    <p><span>{{items.address.place}}<br>{{product.orderIdGoodName}} 共{{product.orderGoodNumber}}件商品</span><span>{{items.time}}</span></p>
-                    <p><span>￥{{product.orderIdUserId}}</span><span>再来一单</span></p>
+                    <p>
+                        <span style="color:rgb(104, 104, 104)">{{items.address.place}}<br>
+                            <span style=" font-size:.25rem; margin-top: .15rem; color: rgb(192, 191, 191);">{{product.orderIdGoodName}} 共{{product.orderGoodNumber}}件商品</span></span><span style="color: rgb(192, 191, 191); font-size:.25rem;">{{items.time}}</span></p>
+                    <p>
+                        <span style="color:rgb(226, 195, 95)">￥{{product.orderIdUserId}}</span>
+                        <span style="border: 1px solid rgb(192, 191, 191); padding: .04rem .12rem; color:rgb(104, 104, 104)">再来一单</span>
+                    </p>
                 </div>
             </li>
         </ul>
@@ -68,17 +73,19 @@
         padding: 0 0.2rem;
         margin-bottom: 0.2rem;
         background: #fff;
+        
     }
     p{
         display: flex;
         justify-content: space-between;
         /* background: red; */
+        
     }
     span{
         display: block;
     }
     .allItems li>p:nth-of-type(1){
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid rgb(206, 207, 209);
         height: 0.8rem;
         line-height: 0.8rem;
     }

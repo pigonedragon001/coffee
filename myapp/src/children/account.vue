@@ -12,7 +12,7 @@
             <p>订单信息</p>
             <ul>
                 <li v-for="product in products" :key="product.shoppingId">
-                    <p style="font-weight: bold">{{ product.goodName }}</p>
+                    <p style="font-weight: bold">{{ product.goodName }} <br> <span style="font-size: 0.25rem;font-weight: normal;">{{product.shoppingGoodSize}}/{{product.shoppingGoodSweet}}/{{product.shoppingGoodTemperture}}</span> </p>
                     <p><span style="margin-right: 20px;">×{{ product.shoppingGoodNumber }}</span><span
                             style="font-weight: bold">￥{{product.shoppingGoodPrice}}</span></p>
                 </li>
