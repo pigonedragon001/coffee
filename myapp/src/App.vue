@@ -39,15 +39,10 @@ export default {
 </script>
 
 <style>
-.project{
-   width: 100vw;
-   height: 100vh;
-}
-
- .project{
-    width: 100vw;
-    height: 100vh;
- }
+   .project{
+      width: 100vw;
+      height: 100vh;
+   }
 
 *{
    padding: 0;

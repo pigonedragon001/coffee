@@ -58,13 +58,17 @@ export default {
        },
        methods: {
            goto(){
-                this.$router.push('/register')
+                if(localStorage.getItem('token')===null){
+                     this.$router.push('/register')
+                }
            },
            togo(){
                 var token=localStorage.getItem('token');
                 var userTel=localStorage.getItem('tel');
-                 console.log(token,userTel)
+                //  console.log(token,userTel)
                 axios.post('/lc/usermess',{token,userTel}).then(result=>{
+                    // console.log(result.data)
+                    // if(result.data.)
                     console.log(result.data)
                     if(result.data.errMsg){
                         this.$router.push('/err')
